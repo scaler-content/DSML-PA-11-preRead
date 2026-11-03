@@ -1,0 +1,327 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PA Lecture 11: Applied Case Study — I · Amazon Now in the Festive Sale — Pre-Read</title>
+<style>
+  :root{
+    --page:#F8FAFC; --card:#FFFFFF; --section:#F1F5F9;
+    --primary:#6366F1; --hover:#4338CA; --wash:#EEF2FF;
+    --blue:#0EA5E9; --growth:#10B981; --caution:#F59E0B; --alert:#EF4444; --secondary:#8B5CF6;
+    --h:#0F172A; --body:#1E293B; --muted:#64748B; --faint:#94A3B8;
+    --border:#E2E8F0; --border-strong:#CBD5E1;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth; scroll-padding-top:env(safe-area-inset-top,0px)}
+  body{margin:0; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    background:var(--page); color:var(--body); line-height:1.6; -webkit-font-smoothing:antialiased}
+  .wrap{max-width:860px; margin:0 auto; padding:0 20px 80px}
+  .hero{background:linear-gradient(135deg,var(--primary),var(--hover)); color:#fff;
+    border-radius:0 0 28px 28px; padding:48px 28px 40px; margin-bottom:32px;
+    box-shadow:0 12px 30px -12px rgba(99,102,241,.5)}
+  .hero-inner{max-width:860px; margin:0 auto}
+  .kicker{display:inline-block; font-size:12px; font-weight:700; letter-spacing:.14em;
+    text-transform:uppercase; background:rgba(255,255,255,.18); padding:6px 12px; border-radius:999px; margin-bottom:16px}
+  .hero h1{margin:0 0 8px; font-size:clamp(26px,5vw,38px); font-weight:800; line-height:1.15}
+  .hero .sub{margin:0; font-size:clamp(15px,2.6vw,18px); opacity:.92; font-weight:400; max-width:640px}
+  .hero .meta{margin-top:20px; display:flex; flex-wrap:wrap; gap:10px}
+  .chip{font-size:12px; font-weight:600; background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.25); padding:6px 12px; border-radius:8px}
+  section{margin:0 0 36px}
+  .sec-label{display:flex; align-items:center; gap:10px; font-size:13px; font-weight:700;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--primary); margin:0 0 6px}
+  .sec-label::before{content:""; width:26px; height:3px; background:var(--primary); border-radius:2px}
+  h2.sec-title{margin:0 0 18px; font-size:clamp(20px,3.6vw,26px); font-weight:800; color:var(--h)}
+  .sec-intro{color:var(--muted); font-style:italic; margin:-8px 0 20px; font-size:15px}
+  .case{background:var(--card); border:1px solid var(--border); border-radius:20px;
+    overflow:hidden; box-shadow:0 8px 24px -14px rgba(15,23,42,.25)}
+  .case-top{background:#0F172A; color:#fff; padding:20px 24px; display:flex; align-items:center; gap:14px}
+  .case-badge{font-size:26px; line-height:1}
+  .case-top .cf{font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:#94A3B8; font-weight:700}
+  .case-top .ct{font-size:19px; font-weight:800; letter-spacing:.02em}
+  .case-top .dom{margin-left:auto; font-size:11px; font-weight:700; color:#c7d2fe;
+    background:rgba(99,102,241,.25); border:1px solid rgba(99,102,241,.5); padding:5px 10px; border-radius:8px}
+  .case-body{padding:24px}
+  .block-h{font-size:12px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin:0 0 8px}
+  .block-h.red{color:var(--alert)} .block-h.grn{color:var(--growth)}
+  .setup-p{margin:0 0 22px; font-size:15.5px; color:var(--body)}
+  .ev{list-style:none; padding:0; margin:0 0 22px}
+  .ev li{position:relative; padding:6px 0 6px 26px; font-size:14.5px; color:var(--body)}
+  .ev li::before{content:""; position:absolute; left:4px; top:14px; width:8px; height:8px;
+    background:var(--blue); border-radius:2px; transform:rotate(45deg)}
+  .mystery{background:var(--wash); border-left:4px solid var(--primary); border-radius:0 12px 12px 0;
+    padding:16px 18px; margin:0 0 22px; font-size:16px; font-weight:600; color:var(--hover); font-style:italic}
+  .moves{display:grid; gap:10px; margin-bottom:8px}
+  .move-hint{font-size:13px; color:var(--muted); font-style:italic; margin:0 0 12px}
+  .move{display:flex; align-items:flex-start; gap:12px; text-align:left; width:100%;
+    background:var(--card); border:1.5px solid var(--border); border-radius:12px; padding:14px 16px;
+    font:inherit; color:var(--body); cursor:pointer; transition:all .18s}
+  .move:hover{border-color:var(--primary); background:var(--wash); transform:translateY(-1px)}
+  .move-box{flex:none; width:20px; height:20px; border:2px solid var(--border-strong);
+    border-radius:6px; margin-top:1px; transition:all .18s; position:relative}
+  .move.chosen .move-box{background:var(--primary); border-color:var(--primary)}
+  .move.chosen .move-box::after{content:"\2713"; position:absolute; inset:0; color:#fff;
+    font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center}
+  .move-label{font-size:14.5px; font-weight:500}
+  .move.chosen{border-color:var(--primary); background:var(--wash)}
+  .move.dim{opacity:.5}
+  .reveal{margin-top:14px; background:var(--section); border:1px dashed var(--border-strong);
+    border-radius:12px; padding:0 16px; max-height:0; overflow:hidden; transition:all .3s; opacity:0}
+  .reveal.show{max-height:240px; opacity:1; padding:14px 16px; margin-top:14px}
+  .reveal .rl{font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--secondary); margin:0 0 6px}
+  .reveal p{margin:0; font-size:14px; color:var(--body)}
+  .clue{margin-top:20px; border-radius:14px; overflow:hidden; border:1px solid var(--border)}
+  .clue-btn{width:100%; display:flex; align-items:center; gap:12px; background:var(--section);
+    border:none; padding:16px 18px; font:inherit; cursor:pointer; color:var(--muted); font-weight:700;
+    font-size:13px; letter-spacing:.06em; text-transform:uppercase; transition:background .18s}
+  .clue-btn:hover{background:#e6ebf2}
+  .clue-btn .lock{font-size:16px}
+  .clue-btn .hintr{margin-left:auto; font-size:11px; font-weight:600; text-transform:none; letter-spacing:0; color:var(--faint)}
+  .clue-body{max-height:0; overflow:hidden; transition:max-height .35s; background:var(--wash)}
+  .clue-body.open{max-height:320px}
+  .clue-body-inner{padding:18px 20px}
+  .clue-body-inner p{margin:0 0 10px; font-size:14.5px; color:var(--hover); font-style:italic}
+  .clue-body-inner p:last-child{margin:0}
+  .mission{display:block; margin-top:12px; font-weight:700; font-style:normal; color:var(--hover)}
+  .topics{display:grid; gap:10px}
+  .topic{text-align:left; width:100%; background:var(--card); border:1px solid var(--border);
+    border-radius:14px; padding:0; font:inherit; cursor:pointer; overflow:hidden; transition:border-color .18s}
+  .topic:hover{border-color:var(--border-strong)}
+  .topic[aria-expanded="true"]{border-color:var(--primary)}
+  .topic-head{display:flex; align-items:center; gap:14px; padding:16px 18px}
+  .topic-num{flex:none; font-size:13px; font-weight:800; color:var(--primary); background:var(--wash);
+    width:34px; height:34px; border-radius:9px; display:flex; align-items:center; justify-content:center}
+  .topic-name{font-size:15.5px; font-weight:700; color:var(--h); flex:1}
+  .chev{flex:none; font-size:22px; color:var(--primary); font-weight:400; transition:transform .22s; line-height:1}
+  .topic[aria-expanded="true"] .chev{transform:rotate(45deg)}
+  .topic-body{max-height:0; overflow:hidden; transition:max-height .28s}
+  .topic[aria-expanded="true"] .topic-body{max-height:260px}
+  .topic-body p{margin:0; padding:0 18px 18px 66px; font-size:14.5px; color:var(--body)}
+  .uses{display:grid; gap:12px}
+  .uc{display:flex; gap:14px; background:var(--card); border:1px solid var(--border);
+    border-radius:12px; padding:16px 18px}
+  .uc-dot{flex:none; width:10px; height:10px; border-radius:50%; background:var(--growth); margin-top:7px}
+  .uc strong{display:block; color:var(--h); font-size:14.5px; margin-bottom:3px}
+  .uc span{font-size:14px; color:var(--body)}
+  .prereqs{display:grid; gap:0; background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden}
+  .pq{display:grid; grid-template-columns:200px 1fr; gap:0; border-bottom:1px solid var(--border)}
+  .pq:last-child{border-bottom:none}
+  .pq-t{padding:16px 18px; font-weight:700; font-size:14px; color:var(--h); background:var(--section)}
+  .pq-r{padding:16px 18px; font-size:14px; color:var(--body)}
+  @media(max-width:640px){.pq{grid-template-columns:1fr} .pq-t{border-bottom:1px solid var(--border)}}
+  .setup-card{background:var(--card); border:1px solid var(--border); border-radius:16px; padding:8px 20px 20px}
+  .setup-item{display:flex; align-items:flex-start; gap:14px; padding:14px 0; border-bottom:1px solid var(--border); cursor:pointer}
+  .setup-item:last-child{border-bottom:none}
+  .setup-item input{position:absolute; opacity:0; width:0; height:0}
+  .chk{flex:none; width:24px; height:24px; border:2px solid var(--border-strong); border-radius:7px;
+    margin-top:1px; transition:all .18s; position:relative}
+  .setup-item input:checked + .chk{background:var(--growth); border-color:var(--growth)}
+  .setup-item input:checked + .chk::after{content:"\2713"; position:absolute; inset:0; color:#fff;
+    font-weight:800; font-size:15px; display:flex; align-items:center; justify-content:center}
+  .setup-text{font-size:14.5px; color:var(--body); transition:all .18s}
+  .setup-item input:checked ~ .setup-text{color:var(--faint); text-decoration:line-through}
+  .progress{margin:16px 0 4px; height:8px; background:var(--section); border-radius:99px; overflow:hidden}
+  .progress-bar{height:100%; width:0; background:linear-gradient(90deg,var(--growth),#34d399); border-radius:99px; transition:width .3s}
+  .progress-txt{font-size:13px; color:var(--muted); font-weight:600; text-align:right; margin-top:6px}
+  footer{text-align:center; color:var(--faint); font-size:12.5px; margin-top:48px; padding-top:24px; border-top:1px solid var(--border)}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <div class="hero-inner">
+      <span class="kicker">Product Analytics · Pre-Read</span>
+      <h1>Lecture 11: Applied Case Study — I · Amazon Now in the Festive Sale</h1>
+      <p class="sub">No new concepts today. Step into a Product Analyst&#x27;s shoes and use every framework from the module on one current business problem, from start to finish.</p>
+      <div class="meta">
+        <span class="chip">🎯 4 sections · 1 case file</span>
+        <span class="chip">⏱ ~10 min before class</span>
+        <span class="chip">✅ Prereq: A/B Testing &amp; Launch Recommendations</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <section>
+      <p class="sec-label">Section 1</p>
+      <h2 class="sec-title">What’s Happening in This Lecture</h2>
+      <p class="sec-intro">Here’s a sneak peek at everything we cover today, and why each one is worth showing up for.</p>
+
+      <div class="case">
+        <div class="case-top">
+          <span class="case-badge">🕵️</span>
+          <div>
+            <div class="cf">The Analyst Files · Case #11</div>
+            <div class="ct">THE 10-MINUTE BET</div>
+          </div>
+          <span class="dom">E-commerce</span>
+        </div>
+        <div class="case-body">
+          <p class="block-h">Setup</p>
+          <p class="setup-p">You&#x27;re a Product Analyst at Amazon India. For the Great Indian Festival, Amazon has put Amazon Now, its 10–15 minute delivery service, right inside the main sale. Shoppers can choose quick delivery at search. Leadership asks: “How will we know this is a success? What metrics would you track?”</p>
+
+          <p class="block-h">Evidence</p>
+          <ul class="ev"><li>The Great Indian Festival started on October 8th, a day before Flipkart&#x27;s Big Billion Days.</li><li>Shoppers can now get urgent items in 10–15 minutes without switching to Blinkit, Zepto or Swiggy Instamart.</li><li>Quick delivery needs local centres and dedicated riders, so each order costs more to deliver than standard delivery.</li></ul>
+
+          <p class="block-h red">The Mystery</p>
+          <p class="mystery">Before you pick a single metric, you have to set the business goal. What should Amazon&#x27;s goal be for this launch?</p>
+
+          <p class="block-h grn">Make Your Move</p>
+          <p class="move-hint">Choose your first move before continuing. There’s no need to know the answer yet — tap an option to see why it’s worth considering.</p>
+          <div class="moves">
+        <button class="move" data-reveal="This is the most common trap. If a shopper switches an order from standard to quick delivery, this count goes up, but Amazon hasn&#x27;t gained anything new and may have paid more to deliver it.">
+  <span class="move-box" aria-hidden="true"></span>
+  <span class="move-label">A. Maximise the number of quick-delivery orders placed during the sale.</span>
+</button>
+<button class="move" data-reveal="Traffic is an awareness signal, not an outcome. The sale already drives traffic on its own.">
+  <span class="move-box" aria-hidden="true"></span>
+  <span class="move-label">B. Maximise app traffic and sessions during the sale window.</span>
+</button>
+<button class="move" data-reveal="Strong pick. It separates genuinely new orders from orders that only switched delivery option, and “sustainable cost” tells you guardrail metrics will be needed.">
+  <span class="move-box" aria-hidden="true"></span>
+  <span class="move-label">C. Increase orders per active user with genuinely new orders, at a sustainable cost.</span>
+</button>
+<button class="move" data-reveal="City expansion is an operational input. It widens reach, but it doesn&#x27;t tell you whether the feature creates value.">
+  <span class="move-box" aria-hidden="true"></span>
+  <span class="move-label">D. Expand quick delivery to as many new cities as possible.</span>
+</button>
+</div>
+          <div class="reveal" id="reveal">
+            <p class="rl">Why this move</p>
+            <p id="reveal-text"></p>
+          </div>
+
+          <div class="clue">
+            <button class="clue-btn" id="clue-btn">
+              <span class="lock">🔒</span><span>Clue Locked</span>
+              <span class="hintr">tap to unlock →</span>
+            </button>
+            <div class="clue-body" id="clue-body">
+              <div class="clue-body-inner">
+                <p>This is a metric definition question, so the spine of the session is the 4-step framework: Clarify → Business Goals → Define Metrics (AAAERR + guardrails, then North Star / L1 / L2) → Summarize. Guesstimates, cannibalization, A/B testing and RFM plug in along the way.</p><p>Your mission: come to class able to explain why quick-delivery orders rising 50% might not mean Amazon gained anything.</p>
+                <span class="mission">🎯 Your mission: come to class with a first move in mind.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <p class="sec-label" style="margin-top:8px">Topic Preview</p>
+      <h2 class="sec-title">What You’ll Learn</h2>
+      <p class="sec-intro">Tap any topic to see what it covers and why it matters.</p>
+      <div class="topics">
+        <button class="topic" aria-expanded="false">
+  <div class="topic-head"><span class="topic-num">01</span><span class="topic-name">Objective &amp; Sizing the Prize</span><span class="chev">+</span></div>
+  <div class="topic-body"><p>Why Amazon put 10–15 minute delivery inside its biggest sale, and a guesstimate of daily quick-delivery orders. You&#x27;ll validate it against how many orders Amazon&#x27;s local centres can actually handle.</p></div>
+</button>
+<button class="topic" aria-expanded="false">
+  <div class="topic-head"><span class="topic-num">02</span><span class="topic-name">Clarify &amp; Business Goals</span><span class="chev">+</span></div>
+  <div class="topic-body"><p>What problem the feature solves, who benefits (shoppers, sellers, Amazon), and the goal for each one. The business goal is where most candidates make their first mistake.</p></div>
+</button>
+<button class="topic" aria-expanded="false">
+  <div class="topic-head"><span class="topic-num">03</span><span class="topic-name">Define Metrics with AAAERR</span><span class="chev">+</span></div>
+  <div class="topic-body"><p>One metric per stage, from Awareness to Retention, for Amazon Now. You&#x27;ll see which stages don&#x27;t apply and which one most people skip.</p></div>
+</button>
+<button class="topic" aria-expanded="false">
+  <div class="topic-head"><span class="topic-num">04</span><span class="topic-name">AI Moment: Judge the AI&#x27;s Metric List</span><span class="chev">+</span></div>
+  <div class="topic-body"><p>An AI tool drafts 8 success metrics. You&#x27;ll spot the vanity metrics and the guardrails it left out.</p></div>
+</button>
+<button class="topic" aria-expanded="false">
+  <div class="topic-head"><span class="topic-num">05</span><span class="topic-name">Metric Hierarchy &amp; the Cannibalization Trap</span><span class="chev">+</span></div>
+  <div class="topic-body"><p>Label the North Star, L1 and L2 metrics, pick one for the daily war-room dashboard, and see why a 50% jump in quick-delivery orders can mean zero new orders.</p></div>
+</button>
+<button class="topic" aria-expanded="false">
+  <div class="topic-head"><span class="topic-num">06</span><span class="topic-name">A/B Test, Launch Call &amp; RFM Retention</span><span class="chev">+</span></div>
+  <div class="topic-body"><p>Design the experiment that proves incremental orders, read results that disagree by city type, make a launch recommendation, and use RFM to decide which shoppers to win back first.</p></div>
+</button>
+</div>
+    </section>
+
+    <section>
+      <p class="sec-label">Section 2</p>
+      <h2 class="sec-title">Real-World Use Cases</h2>
+      <div class="uses"><div class="uc"><div class="uc-dot"></div><div><strong>Quick commerce vs. e-commerce</strong><span>Amazon, Flipkart and the quick-commerce apps all compete for urgent orders. Analysts must show whether fast delivery brings in new orders or only reshuffles existing ones.</span></div></div>
+<div class="uc"><div class="uc-dot"></div><div><strong>Cannibalization checks on launches</strong><span>Any new option that competes with an existing one — a new plan tier, a new channel, a new delivery speed — needs a total-orders guardrail before anyone calls it a win.</span></div></div>
+<div class="uc"><div class="uc-dot"></div><div><strong>Partial launch decisions</strong><span>Real launch calls are rarely a plain yes or no: ship where every guardrail passes, hold where cost or experience breaks, and fix it before scaling.</span></div></div>
+<div class="uc"><div class="uc-dot"></div><div><strong>Product analyst interviews</strong><span>“How would you measure success for X?” is one of the most common interview questions. Interviewers score the order of your thinking, not just the metrics you list.</span></div></div>
+</div>
+    </section>
+
+    <section>
+      <p class="sec-label">Section 3</p>
+      <h2 class="sec-title">Prerequisites to Refresh</h2>
+      <p class="sec-intro">Today is pure practice. Every checkpoint uses something you&#x27;ve already learned, so refresh these.</p>
+      <div class="prereqs"><div class="pq"><div class="pq-t">4-step definition framework</div><div class="pq-r">Clarify → Business Goals → Define Metrics → Summarize, from Product Strategy and Product Metrics I.</div></div>
+<div class="pq"><div class="pq-t">AAAERR, guardrails &amp; metric hierarchy</div><div class="pq-r">The six stages, guardrails, vanity vs. actionable metrics, and North Star / L1 / L2 labels.</div></div>
+<div class="pq"><div class="pq-t">Guesstimates</div><div class="pq-r">Narrowing-funnel estimation trees and validating against an independent number, as in the AdSense sanity check.</div></div>
+<div class="pq"><div class="pq-t">Cannibalization &amp; seasonality</div><div class="pq-r">The C in TROPiCS and the External Data step of CRIED, plus separating new revenue from revenue that only shifted channels (Indian Bank case).</div></div>
+<div class="pq"><div class="pq-t">A/B testing &amp; RFM</div><div class="pq-r">Hypotheses, sample size, novelty effect, decisions when a guardrail fails, and RFM segments like Champions and Can&#x27;t Lose Them.</div></div>
+</div>
+    </section>
+
+    <section>
+      <p class="sec-label">Section 4</p>
+      <h2 class="sec-title">Before Class: Environment Setup</h2>
+      <p class="sec-intro">A live, poll-driven case. No tools to install, and every number in the case is illustrative.</p>
+      <div class="setup-card">
+        <label class="setup-item"><input type="checkbox"><span class="chk"></span><span class="setup-text">Keep a paper or notepad ready. You&#x27;ll write your assumptions and approach before any framework is shown.</span></label><label class="setup-item"><input type="checkbox"><span class="chk"></span><span class="setup-text">Revise the AAAERR stages and the North Star / L1 / L2 definitions. You&#x27;ll build both live from chat.</span></label><label class="setup-item"><input type="checkbox"><span class="chk"></span><span class="setup-text">Keep a calculator handy for the estimation tree (crore and lakh) and the launch-impact maths.</span></label><label class="setup-item"><input type="checkbox"><span class="chk"></span><span class="setup-text">Have Claude or ChatGPT open if you&#x27;d like to try the AI prompt alongside the instructor.</span></label>
+        <div class="progress"><div class="progress-bar" id="pbar"></div></div>
+        <div class="progress-txt" id="ptxt">0 of 4 done</div>
+      </div>
+    </section>
+
+    <footer>Scaler · Product Analytics Module · Lecture 11 Pre-Read</footer>
+  </div>
+
+<script>
+  // Make Your Move
+  var moves = Array.prototype.slice.call(document.querySelectorAll('.move'));
+  var reveal = document.getElementById('reveal');
+  var revealText = document.getElementById('reveal-text');
+  moves.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      moves.forEach(function(m){ m.classList.remove('chosen'); m.classList.add('dim'); });
+      btn.classList.add('chosen'); btn.classList.remove('dim');
+      revealText.textContent = btn.getAttribute('data-reveal');
+      reveal.classList.add('show');
+    });
+  });
+
+  // Locked clue
+  var cbtn = document.getElementById('clue-btn');
+  var cbody = document.getElementById('clue-body');
+  cbtn.addEventListener('click', function(){
+    var open = cbody.classList.toggle('open');
+    cbtn.querySelector('.lock').textContent = open ? '🔓' : '🔒';
+    cbtn.querySelector('span:nth-child(2)').textContent = open ? 'Clue Unlocked' : 'Clue Locked';
+    cbtn.querySelector('.hintr').textContent = open ? '' : 'tap to unlock →';
+  });
+
+  // Topics accordion
+  document.querySelectorAll('.topic').forEach(function(t){
+    t.addEventListener('click', function(){
+      var open = t.getAttribute('aria-expanded') === 'true';
+      t.setAttribute('aria-expanded', open ? 'false' : 'true');
+    });
+  });
+
+  // Setup progress
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('.setup-item input'));
+  var pbar = document.getElementById('pbar');
+  var ptxt = document.getElementById('ptxt');
+  function upd(){
+    var done = boxes.filter(function(b){return b.checked;}).length;
+    pbar.style.width = (done/boxes.length*100) + '%';
+    ptxt.textContent = done + ' of ' + boxes.length + ' done';
+  }
+  boxes.forEach(function(b){ b.addEventListener('change', upd); });
+</script>
+</body>
+</html>
+</body></html>
